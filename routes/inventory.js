@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Inventory' });
 });
 
-/* GET home page. */
+/* GET category list page. */
 router.get('/category', categoryController.category_list);
 
 // /* GET home page. */
@@ -17,7 +17,7 @@ router.get('/category', categoryController.category_list);
 //     res.send(`Category ${req.params.id}`);
 // });
 
-/* GET home page. */
+/* GET item list page. */
 router.get('/item', itemController.item_list);
 
 // /* GET home page. */
