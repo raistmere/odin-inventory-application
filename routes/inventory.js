@@ -1,15 +1,15 @@
 var express = require('express');
 var router = express.Router();
 
+var categoryController = require('../controllers/categoryController')
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Inventory' });
 });
 
 /* GET home page. */
-router.get('/category', function(req, res, next) {
-    res.render('category_list', {title: 'Category List'})
-});
+router.get('/category', categoryController.category_list);
 
 // /* GET home page. */
 // router.get('/category/:id', function(req, res, next) {
