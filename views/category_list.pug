@@ -4,4 +4,5 @@ block content
   h1= title
   ul
     each category in categoryList
-      li= category.name
+      li
+        a(href=`/inventory/category/${category.id}`)= category.name

@@ -6,7 +6,7 @@ exports.get_category_list = async (req, res, next) => {
     console.log(allCategories);
 
     res.render('category_list', { 
-        title: '"NOT IMPLEMENTED: Category List"',
+        title: "Category List",
         categoryList: allCategories,
     });
 }
