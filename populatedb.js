@@ -9,15 +9,15 @@ const userArgs = process.argv.slice(2);
 
 
 // // Models
-import CategoryModel from "./models/category.js";
-import ItemModel from "./models/item.js";
+const CategoryModel = require("./models/category.js");
+const ItemModel = require("./models/item.js");
 
 // // Store created data in empty arrays
 const categories = [];
 const items = [];
 
 // // Setup Mongoose and Database
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 // Database based off the userArgs passed through command line
 const mongoDB = userArgs[0];
@@ -46,7 +46,7 @@ async function categoryCreate(index, name, desc) {
   console.log(`Added category: ${name}`);
 }
 
-async function itemCreate(index, name, category, price, numOfStock) {
+async function itemCreate(index, name, desc, category, price, numOfStock) {
   const itemDetail = { 
     name: name, 
     desc: desc, 
@@ -59,7 +59,7 @@ async function itemCreate(index, name, category, price, numOfStock) {
 
   await item.save();
   item[index] = item;
-  console.log(`Added item: ${name} ${category.name}`);
+  console.log(`Added item: ${name} to ${category.name} category`);
 }
 
 async function createCategories() {
@@ -67,17 +67,17 @@ async function createCategories() {
   await Promise.all([
     categoryCreate(0, "Weapons", "This category contains all weapon types."),
     categoryCreate(1, "Armor", "This category contains all armor types."),
-    categoryCreate(2, "Potion", "This category contains all potion types."),
+    categoryCreate(2, "Potions", "This category contains all potion types."),
   ]);
 }
 
 async function createItems() {
   console.log("Adding items");
   await Promise.all([
-    itemCreate(0, "Wooden Sword", categories[0], 57, 15),
-    itemCreate(1, "Iron Sword", categories[0], 103, 7),
-    itemCreate(2, "Leather Helmet", categories[1], 82, 10),
-    itemCreate(3, "Minor Health Potion", categories[2], 23, 21)
+    itemCreate(0, "Wooden Sword", "A sword that is made out of wood. It looks pretty basic.", categories[0], 57, 15),
+    itemCreate(1, "Iron Sword", "An iron sword with well detailed design and quality", categories[0], 103, 7),
+    itemCreate(2, "Leather Helmet", "A leather helemt with simple design with average quality.", categories[1], 82, 10),
+    itemCreate(3, "Minor Health Potion", "A simple health potion that will only mend minor wounds.",categories[2], 23, 21)
   ]);
 }
 

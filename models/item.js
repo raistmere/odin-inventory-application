@@ -13,7 +13,7 @@ const ItemSchema = new Schema({
 
 // Gets the correct URL address of the current category.
 // We don't use arrow because we need to know about "this"
-item.virtual("URL").get(function() {
+ItemSchema.virtual("URL").get(function() {
     return `/inventory/item/${this.id}`;
 })
 
