@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET category list page. */
-router.get('/category', categoryController.category_list);
+router.get('/category', categoryController.get_category_list);
 
 // /* GET home page. */
 // router.get('/category/:id', function(req, res, next) {

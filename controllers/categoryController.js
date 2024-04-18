@@ -1,20 +1,12 @@
-
-var categoryList = [
-    {
-        name: "category 1"
-    },
-    {
-        name: "category 2"
-    },
-    {
-        name: "category 3"
-    }
-];
+const Category = require("../models/category.js");
 
 // Display the inventory category list
-exports.category_list = (req, res, next) => {
+exports.get_category_list = async (req, res, next) => {
+    const allCategories = await Category.find({});
+    console.log(allCategories);
+
     res.render('category_list', { 
         title: '"NOT IMPLEMENTED: Category List"',
-        categoryList: categoryList,
+        categoryList: allCategories,
     });
 }
