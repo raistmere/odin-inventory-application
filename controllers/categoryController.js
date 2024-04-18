@@ -10,3 +10,10 @@ exports.get_category_list = async (req, res, next) => {
         categoryList: allCategories,
     });
 }
+
+// Displays specific category detail based on id
+exports.get_category_detail = async(req, res, next) => {
+    const category = await Category.findById(req.params.id);
+
+    res.render("category_detail", { categoryDetail: category});
+}

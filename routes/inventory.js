@@ -12,10 +12,8 @@ router.get('/', function(req, res, next) {
 /* GET category list page. */
 router.get('/category', categoryController.get_category_list);
 
-// /* GET home page. */
-// router.get('/category/:id', function(req, res, next) {
-//     res.send(`Category ${req.params.id}`);
-// });
+/* GET home page. */
+router.get('/category/:id', categoryController.get_category_detail);
 
 /* GET item list page. */
 router.get('/item', itemController.item_list);
