@@ -13,11 +13,11 @@ exports.get_item_list = async (req, res, next) => {
 
 // Display inventory item detail page
 exports.get_item_detail = async (req, res, next) => {
-    const itemDetail = await Item.findById(req.params.id);
-    const category = await Category.findById(itemDetail.category);
+    const itemDetail = await Item.findById(req.params.id).populate("category", "id name").exec();
+    console.log(itemDetail.category);
 
     res.render("item_detail", {
         itemDetail: itemDetail,
-        category: category
+        // category: category
     });
 }

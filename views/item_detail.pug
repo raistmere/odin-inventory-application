@@ -5,6 +5,6 @@ block content
   ul
     li= `Description: ${itemDetail.desc}`
     li Category: 
-        a(href=`/inventory/category/${category.id}`)= category.name
+        a(href=`/inventory/category/${itemDetail.category.id}`)= itemDetail.category.name
     li= `Price: ${itemDetail.price}` 
     li= `In-Stock: ${itemDetail.numOfStock}` 

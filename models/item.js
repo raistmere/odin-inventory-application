@@ -5,7 +5,7 @@ const Schema  = mongoose.Schema;
 const ItemSchema = new Schema({
     name: String,
     desc: String,
-    category: { type: Schema.Types.ObjectId, ref: "categories"} ,   // There is only one category for each item.
+    category: { type: Schema.Types.ObjectId, ref: "Category", required: true} ,   // There is only one category for each item.
     price: Number,
     numOfStock: Number
 });
