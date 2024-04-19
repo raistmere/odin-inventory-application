@@ -16,11 +16,9 @@ router.get('/category', categoryController.get_category_list);
 router.get('/category/:id', categoryController.get_category_detail);
 
 /* GET item list page. */
-router.get('/item', itemController.item_list);
+router.get('/item', itemController.get_item_list);
 
-// /* GET home page. */
-// router.get('/item/:id', function(req, res, next) {
-//     res.send("Hello World");
-// });
+/* GET home page. */
+router.get('/item/:id', itemController.get_item_detail);
 
 module.exports = router;

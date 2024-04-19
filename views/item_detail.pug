@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= itemDetail.name
+  ul
+    li= `Description: ${itemDetail.desc}`
+    li Category: 
+        a(href=`/inventory/category/${category.id}`)= category.name
+    li= `Price: ${itemDetail.price}` 
+    li= `In-Stock: ${itemDetail.numOfStock}` 
