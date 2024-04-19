@@ -1,19 +1,11 @@
-var itemList = [
-    {
-        name: "Item 1"
-    },
-    {
-        name: "Item 2"
-    },
-    {
-        name: "Item 3"
-    }
-];
+const Item = require("../models/item.js");
 
 // Display the inventory category list
-exports.item_list = (req, res, next) => {
-    res.render('category_list', { 
-        title: '"NOT IMPLEMENTED: Item List"',
-        categoryList: itemList,
+exports.item_list = async (req, res, next) => {
+    const allItems = await Item.find({});
+
+    res.render('item_list', { 
+        title: 'Item List',
+        itemList: allItems,
     });
 }
