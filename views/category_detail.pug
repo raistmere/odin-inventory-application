@@ -1,6 +1,13 @@
 extends layout
 
 block content
-  h1= categoryDetail.name
+  h1= `${categoryDetail.name} Category`
   ul
-    li= categoryDetail.desc
+    li Description:
+      ul
+        li= categoryDetail.desc
+  h3 Item List:
+  ul
+    each item in categoryItemList
+      li
+        a(href=`/inventory/item/${item.id}`)= item.name
