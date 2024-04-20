@@ -25,6 +25,12 @@ router.get('/category/:id', categoryController.get_category_detail);
 /* GET item list page. */
 router.get('/item', itemController.get_item_list);
 
+// GET item create page 
+router.get("/item/create", itemController.get_item_create);
+
+// POST new item
+router.post("/item/create", itemController.post_item_create);
+
 /* GET home page. */
 router.get('/item/:id', itemController.get_item_detail);
 

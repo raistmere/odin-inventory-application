@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1= `Item Create Form`
+  form(action="/inventory/item/create", method="post") 
+    label(for="itemName") Item Name: 
+        input#itemName(type="text" name="itemName" required)
+    hr
+    label(for="itemDesc") Item Description: 
+        textarea#itemDesc(name="itemDesc", cols="30", rows="10" required)
+    hr
+    label(for="itemCategory") Item Category: 
+        select#selectCategory(name="itemCategory")
+            each category in categoryList
+                option(value=category.id)= category.name   
+    hr
+    label(for="itemPrice") Item Price: 
+        input#itemPrice(type="number" name="itemPrice" required)
+    hr
+    label(for="itemStock") Item Stock: 
+        input#itemStock(type="number" name="itemStock" required)
+    hr
+    button(type="submit") Create New Item
