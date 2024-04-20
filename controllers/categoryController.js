@@ -31,6 +31,13 @@ exports.get_category_create = async (req, res, next) => {
 
 // POST new category based on category create form data
 exports.post_category_create = async(req, res, next) => {
-    // res.render("category_create_post", {});
+    // Need to add some type of validation & sanitization here
+
+    // Go ahead and make a new category using the form data we got.
+    const newCategory = new Category({ name: req.body.categoryName, desc: req.body.categoryDesc })
+    // Save the category to the DB
+    newCategory.save();
+    
+    // Redirect to the category list so we can see our new category
     res.redirect("/inventory/category");
 };

@@ -4,7 +4,7 @@ block content
   h1= `Category Create Form`
   form(action="/inventory/category/create", method="post") 
     label(for="categoryName") Category Name: 
-        input#categoryName(type="text" name="categoryName")
+        input#categoryName(type="text" name="categoryName" required)
     label(for="categoryDesc") Category Description: 
-        textarea#categoryDesc(name="categoryDesc", cols="30", rows="10")
+        textarea#categoryDesc(name="categoryDesc", cols="30", rows="10" required)
     button(type="submit") Create New Category
