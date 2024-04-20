@@ -2,12 +2,15 @@ extends layout
 
 block content
   h1= `${categoryDetail.name} Category`
+  a(href= categoryDetail.URL + "/delete") 
+    button Delete Category 
+  hr
+  h3 Description:
   ul
-    li Description:
-      ul
-        li= categoryDetail.desc
+    li= categoryDetail.desc
+  hr
   h3 Item List:
   ul
     each item in categoryItemList
       li
-        a(href=`/inventory/item/${item.id}`)= item.name
+        a(href= item.URL)= item.name

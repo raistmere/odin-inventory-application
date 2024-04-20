@@ -24,6 +24,19 @@ exports.get_category_detail = async(req, res, next) => {
     });
 };
 
+// GET specific category delete page
+exports.get_category_delete = async (req,res,next) => {
+    // 
+    const category = await Category.findById(req.params.id);
+    const allItemsInCategory = await Item.find({category: category._id});
+
+    // 
+    res.render("category_delete", {
+        category: category,
+        itemList: allItemsInCategory
+    })
+};
+
 // GETS category create form
 exports.get_category_create = async (req, res, next) => {
     res.render("category_create", {});
@@ -40,4 +53,13 @@ exports.post_category_create = async(req, res, next) => {
     
     // Redirect to the category list so we can see our new category
     res.redirect("/inventory/category");
+};
+
+// POST delete specific category
+exports.post_category_delete = async (req, res, next) => {
+    // 
+    await Category.findByIdAndDelete(req.body.categoryID);
+
+    // 
+    res.redirect("/inventory/category")
 };
