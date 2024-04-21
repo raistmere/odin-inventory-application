@@ -42,10 +42,22 @@ router.get('/item', itemController.get_item_list);
 // GET item create page 
 router.get("/item/create", itemController.get_item_create);
 
+// GET item delete page
+router.get("/item/:id/delete", itemController.get_item_delete);
+
+// GET item update page
+router.get("/item/:id/update", itemController.get_item_update);
+
+/* GET item detail page */
+router.get('/item/:id', itemController.get_item_detail);
+
 // POST new item
 router.post("/item/create", itemController.post_item_create);
 
-/* GET home page. */
-router.get('/item/:id', itemController.get_item_detail);
+// POST delete specific item
+router.post("/item/:id/delete", itemController.post_item_delete);
+
+// POST update specific item
+router.post("/item/:id/update", itemController.post_item_update);
 
 module.exports = router;

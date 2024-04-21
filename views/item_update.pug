@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= `Item Update Form`
+  form(method="POST") 
+    label(for="itemName") Item Name: 
+        input#itemName(type="text" name="itemName" value=item.name required)
+    label(for="itemDesc") Item Description: 
+        textarea#itemDesc(name="itemDesc", cols="30", rows="10" required)= item.desc
+    label(for="itemID")
+        input#itemID(type="hidden", name="itemID" value=item._id)
+    button(type="submit") Create New Item

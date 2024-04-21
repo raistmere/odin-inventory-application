@@ -2,6 +2,12 @@ extends layout
 
 block content
   h1= itemDetail.name
+  a(href= itemDetail.URL + "/delete") 
+    button Delete Item
+  span 
+  a(href= itemDetail.URL + "/update") 
+    button Update Item 
+  hr
   ul
     li= `Description: ${itemDetail.desc}`
     li Category: 

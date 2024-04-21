@@ -47,3 +47,48 @@ exports.post_item_create = async(req, res, next) => {
     // Redirect user to the all item list so they can see their item on the list.
     res.redirect("/inventory/item");
 };
+
+// GET specific category delete page
+exports.get_item_delete = async (req,res,next) => {
+    // 
+    const item = await Item.findById(req.params.id);
+
+    // 
+    res.render("item_delete", {
+        item: item
+    })
+};
+
+// GET category update page
+exports.get_item_update = async (req, res, next) => {
+    //
+    const item = await Item.findById(req.params.id);
+
+    // 
+    res.render("item_update", {
+        item: item
+    });
+};
+
+// POST delete specific item
+exports.post_item_delete = async (req, res, next) => {
+    // 
+    await Item.findByIdAndDelete(req.body.itemID);
+
+    // 
+    res.redirect("/inventory/item")
+};
+
+// POST update specific item
+exports.post_item_update = async (req, res, next) => {
+    // We have to do some validation & sanitization here
+
+    // After we make sure everything is good, we want to go ahead and apply that update to the DB
+    await Item.findByIdAndUpdate(req.body.itemID, {
+        name: req.body.itemName,
+        desc: req.body.itemDesc
+    });
+
+    // Then we redirect to the item and it should reflect the changes.
+    res.redirect(`/inventory/item/${req.body.itemID}`);
+};
