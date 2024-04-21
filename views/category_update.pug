@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= `Category Update Form`
+  form(method="POST") 
+    label(for="categoryName") Category Name: 
+        input#categoryName(type="text" name="categoryName" value=category.name required)
+    label(for="categoryDesc") Category Description: 
+        textarea#categoryDesc(name="categoryDesc", cols="30", rows="10" required)= category.desc
+    label(for="categoryID")
+        input#categoryID(type="hidden", name="categoryID" value=category._id)
+    button(type="submit") Create New Category

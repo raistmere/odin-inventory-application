@@ -16,7 +16,10 @@ router.get('/category', categoryController.get_category_list);
 router.get('/category/create', categoryController.get_category_create);
 
 // GET category delete page
-router.get("/category/:id/delete", categoryController.get_category_delete)
+router.get("/category/:id/delete", categoryController.get_category_delete);
+
+// GET category update page
+router.get("/category/:id/update", categoryController.get_category_update);
 
 /* GET category detail page. */
 router.get('/category/:id', categoryController.get_category_detail);
@@ -25,7 +28,11 @@ router.get('/category/:id', categoryController.get_category_detail);
 router.post("/category/create", categoryController.post_category_create);
 
 // POST delete specific category
-router.post("/category/:id/delete", categoryController.post_category_delete)
+router.post("/category/:id/delete", categoryController.post_category_delete);
+
+// POST update specific category
+router.post("/category/:id/update", categoryController.post_category_update);
+
 
 
 

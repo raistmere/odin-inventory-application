@@ -3,7 +3,10 @@ extends layout
 block content
   h1= `${categoryDetail.name} Category`
   a(href= categoryDetail.URL + "/delete") 
-    button Delete Category 
+    button Delete Category
+  span 
+  a(href= categoryDetail.URL + "/update") 
+    button Update Category 
   hr
   h3 Description:
   ul

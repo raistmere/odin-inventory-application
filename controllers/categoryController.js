@@ -11,17 +11,21 @@ exports.get_category_list = async (req, res, next) => {
     });
 }
 
-// GETS specific category detail based on id
+// GET specific category detail based on id
 exports.get_category_detail = async(req, res, next) => {
     const category = await Category.findById(req.params.id);
     const categoryItemList = await Item.find({category: category.id});
-    console.log(categoryItemList);
 
     res.render("category_detail", 
     { 
         categoryDetail: category,
         categoryItemList: categoryItemList
     });
+};
+
+// GET category create form
+exports.get_category_create = async (req, res, next) => {
+    res.render("category_create", {});
 };
 
 // GET specific category delete page
@@ -37,10 +41,17 @@ exports.get_category_delete = async (req,res,next) => {
     })
 };
 
-// GETS category create form
-exports.get_category_create = async (req, res, next) => {
-    res.render("category_create", {});
+// GET category update page
+exports.get_category_update = async (req, res, next) => {
+    //
+    const category = await Category.findById(req.params.id);
+
+    // 
+    res.render("category_update", {
+        category: category
+    });
 };
+
 
 // POST new category based on category create form data
 exports.post_category_create = async(req, res, next) => {
@@ -62,4 +73,18 @@ exports.post_category_delete = async (req, res, next) => {
 
     // 
     res.redirect("/inventory/category")
+};
+
+// POST update specific category
+exports.post_category_update = async (req, res, next) => {
+    // We have to do some validation & sanitization here
+
+    // After we make sure everything is good, we want to go ahead and apply that update to the DB
+    await Category.findByIdAndUpdate(req.body.categoryID, {
+        name: req.body.categoryName,
+        desc: req.body.categoryDesc
+    });
+
+    // Then we redirect to the category and it should reflect the changes.
+    res.redirect(`/inventory/category/${req.body.categoryID}`);
 };
